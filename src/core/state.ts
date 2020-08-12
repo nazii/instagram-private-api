@@ -226,7 +226,7 @@ export class State {
     const obj = typeof state === 'string' ? JSON.parse(state) : state;
     if (typeof obj !== 'object') {
       State.stateDebug(`State deserialization failed, obj is of type ${typeof obj} (object expected)`);
-      throw new TypeError('State isn\'t an object or serialized JSON');
+      throw new TypeError("State isn't an object or serialized JSON");
     }
     State.stateDebug(`Deserializing ${Object.keys(obj).join(', ')}`);
     if (obj.constants) {
@@ -254,6 +254,14 @@ export class State {
     this.phoneId = chance.guid();
     this.adid = chance.guid();
     this.build = chance.pickone(builds);
+  }
+
+  public setDevice(deviceId: string, uuid: string, phoneId: string, adId: string, deviceString: string): void {
+    this.deviceString = deviceString;
+    this.deviceId = deviceId;
+    this.uuid = uuid;
+    this.phoneId = phoneId;
+    this.adid = adId;
   }
 
   private generateTemporaryGuid(seed: string, lifetime: number) {
