@@ -70,6 +70,7 @@ export class Request {
         gzip: true,
         headers: this.getDefaultHeaders(),
         method: 'GET',
+        family: 4,
       },
       this.defaults,
     );
